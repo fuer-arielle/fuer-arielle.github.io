@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Für Arielle · von Oma Gretl</title>
 <meta name="theme-color" content="#fdf8f3">
+<link rel="icon" href="data:,">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,600;1,400&display=swap');
 :root{--creme:#fdf8f3;--rose:#b76e79;--rose2:#d9a3ab;--dunkel:#5c3840;--gold:#c4a062;--grau:#9c8389}
@@ -66,8 +67,9 @@ var a=document.getElementById('a'),k=document.getElementById('k'),z=document.get
     d=document.getElementById('d'),b=document.getElementById('b');
 function f(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
 function s(){a.paused?a.play():a.pause()}
-a.addEventListener('loadedmetadata',function(){d.textContent=f(a.duration)});
-a.addEventListener('timeupdate',function(){z.textContent=f(a.currentTime);b.style.width=(100*a.currentTime/a.duration)+'%'});
+function dz(){if(a.duration&&isFinite(a.duration))d.textContent=f(a.duration)}
+a.addEventListener('loadedmetadata',dz);a.addEventListener('durationchange',dz);dz();
+a.addEventListener('timeupdate',function(){dz();z.textContent=f(a.currentTime);b.style.width=(100*a.currentTime/a.duration)+'%'});
 var P={play:'M8 5.5v13l11-6.5z',pause:'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z',
  wieder:'M12 5a7 7 0 1 1-6.3 4h2.2A5 5 0 1 0 12 7v3l-4.5-4L12 2z'};
 function z2(t,icon){document.getElementById('kt').textContent=t;document.getElementById('ip').setAttribute('d',P[icon]);}
