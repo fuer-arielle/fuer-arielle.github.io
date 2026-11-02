@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Sprachnachricht</title>
+<style>
+  body { margin:0; font-family: Georgia, serif; background:#f6f1e7; color:#3a2f22;
+         display:flex; min-height:100vh; align-items:center; justify-content:center; }
+  main { text-align:center; padding:32px 20px; max-width:420px; }
+  h1 { font-weight:normal; font-size:1.6rem; margin:0 0 8px; }
+  p.nr { color:#8a7a66; margin:0 0 28px; font-size:.9rem; }
+  button { width:150px; height:150px; border-radius:50%; border:none; cursor:pointer;
+           background:#7a5c3e; color:#fff; font-size:1.1rem; font-family:inherit;
+           box-shadow:0 6px 18px rgba(0,0,0,.2); }
+  button:active { transform:scale(.97); }
+  audio { display:block; width:100%; margin-top:28px; }
+  footer { margin-top:40px; font-size:.8rem; color:#8a7a66; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Test Sprachnachricht</h1>
+  <p class="nr">Sprachnachricht Nr. 001</p>
+  <button id="k" onclick="s()">▶ Anhören</button>
+  <audio id="a" controls preload="auto">
+    <source src="audio/001.m4a" type="audio/mp4">
+    <source src="audio/001.mp3" type="audio/mpeg">
+  </audio>
+  <footer><a href="./" style="color:inherit">Alle Nachrichten</a></footer>
+</main>
+<script>
+  var a=document.getElementById('a'), k=document.getElementById('k');
+  function s(){ if(a.paused){a.play();}else{a.pause();} }
+  a.addEventListener('play', function(){k.textContent='❚❚ Pause';});
+  a.addEventListener('pause', function(){k.textContent='▶ Anhören';});
+  a.addEventListener('ended', function(){k.textContent='↻ Nochmal';});
+</script>
+</body>
+</html>
