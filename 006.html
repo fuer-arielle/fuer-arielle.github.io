@@ -86,11 +86,15 @@ function zeige(t){var D=dauer(),p=D?Math.min(100,Math.max(0,100*t/D)):0;
 /* Schieberegler: tippen springt hin, ziehen verschiebt, beim Loslassen wird gesprungen */
 function stelle(e){var r=sp.getBoundingClientRect();return Math.min(1,Math.max(0,(e.clientX-r.left)/r.width))*dauer()}
 function springe(t){var D=dauer();if(!D)return;a.currentTime=Math.min(D-0.05,Math.max(0,t));zeige(a.currentTime)}
+var letzt=0;
+function ende(){if(!zieht)return;zieht=false;sp.classList.remove('zieht');springe(letzt)}
 sp.addEventListener('pointerdown',function(e){if(!dauer()){a.load();return}zieht=true;sp.classList.add('zieht');
- try{sp.setPointerCapture(e.pointerId)}catch(_){}zeige(stelle(e));e.preventDefault()});
-sp.addEventListener('pointermove',function(e){if(zieht)zeige(stelle(e))});
-sp.addEventListener('pointerup',function(e){if(!zieht)return;zieht=false;sp.classList.remove('zieht');springe(stelle(e))});
-sp.addEventListener('pointercancel',function(){zieht=false;sp.classList.remove('zieht');zeige(a.currentTime)});
+ try{sp.setPointerCapture(e.pointerId)}catch(_){}letzt=stelle(e);zeige(letzt);e.preventDefault()});
+sp.addEventListener('pointermove',function(e){if(zieht){letzt=stelle(e);zeige(letzt)}});
+sp.addEventListener('pointerup',function(e){if(zieht)letzt=stelle(e);ende()});
+/* Loslassen ausserhalb oder abgebrochene Geste: an die zuletzt gezeigte Stelle springen */
+sp.addEventListener('pointercancel',ende);sp.addEventListener('lostpointercapture',ende);
+window.addEventListener('pointerup',ende);window.addEventListener('blur',ende);
 sp.addEventListener('keydown',function(e){var t=a.currentTime;
  if(e.key==='ArrowRight'||e.key==='ArrowUp')t+=5;else if(e.key==='ArrowLeft'||e.key==='ArrowDown')t-=5;
  else if(e.key==='Home')t=0;else if(e.key==='End')t=dauer();else return;e.preventDefault();springe(t)});
