@@ -26,8 +26,15 @@ h1{font-weight:600;font-size:2rem;margin:4px 0 6px;line-height:1.15}
 .knopf svg{display:block;margin:0 auto 4px}
 .knopf span{display:block}
 .zeit{margin:22px 0 0;font-size:1rem;color:var(--grau);font-variant-numeric:tabular-nums}
-.balken{height:4px;background:#f0dfe2;border-radius:2px;margin:10px 20px 0;overflow:hidden}
-.balken i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold))}
+.spur{position:relative;height:36px;margin:4px 14px 0;cursor:pointer;touch-action:none;
+ -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.spur .bahn{position:absolute;left:0;right:0;top:50%;height:6px;margin-top:-3px;background:#f0dfe2;border-radius:3px;overflow:hidden}
+.spur .bahn i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold))}
+.spur .griff{position:absolute;top:50%;left:0;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;
+ background:#fff;border:2px solid var(--rose);box-shadow:0 2px 7px rgba(92,56,64,.28);transition:transform .12s}
+.spur.zieht .griff{transform:scale(1.3)}
+.spur:focus{outline:none}
+.spur:focus-visible{outline:2px solid var(--rose2);outline-offset:4px;border-radius:10px}
 .herz{margin:26px 0 0;color:var(--rose2);font-size:1.3rem;letter-spacing:.5em}
 footer{margin-top:22px;font-size:.9rem;color:var(--grau)}
 footer a{color:inherit}
@@ -38,4 +45,4 @@ li a{display:flex;justify-content:space-between;align-items:baseline;padding:14p
 </style></head><body><main><div class="rahmen">
 <img class="fuer" src="fuer.png" alt="Für Arielle"><p class="anlass">zum 18. Geburtstag</p>
 <p class="von" style="margin-bottom:18px">Stimmen aus dem Fotoalbum</p>
-<ul><li><a href="001.html"><b>Annalena</b><small>Nachricht 001</small></a></li><li><a href="010.html"><b>Clara</b><small>Nachricht 010</small></a></li><li><a href="006.html"><b>Fritz</b><small>Nachricht 006</small></a></li><li><a href="007.html"><b>Harakiri</b><small>Nachricht 007</small></a></li><li><a href="008.html"><b>Jannet und Mario</b><small>Nachricht 008</small></a></li><li><a href="005.html"><b>Lin</b><small>Nachricht 005</small></a></li><li><a href="002.html"><b>Nina</b><small>Nachricht 002</small></a></li><li><a href="003.html"><b>Pim</b><small>Nachricht 003</small></a></li><li><a href="009.html"><b>Tante</b><small>Nachricht 009</small></a></li><li><a href="004.html"><b>Vanessa</b><small>Nachricht 004</small></a></li></ul><p class="herz">♥ ♥ ♥</p></div></main></body></html>
+<ul><li><a href="003.html"><b>Annalena</b><small>Nachricht 003</small></a></li><li><a href="004.html"><b>Nina</b><small>Nachricht 004</small></a></li><li><a href="005.html"><b>Pim</b><small>Nachricht 005</small></a></li><li><a href="006.html"><b>Vanessa</b><small>Nachricht 006</small></a></li><li><a href="007.html"><b>Lin</b><small>Nachricht 007</small></a></li><li><a href="008.html"><b>Fritz</b><small>Nachricht 008</small></a></li><li><a href="009.html"><b>Harakiri</b><small>Nachricht 009</small></a></li><li><a href="010.html"><b>Jannet und Mario</b><small>Nachricht 010</small></a></li><li><a href="011.html"><b>Tante</b><small>Nachricht 011</small></a></li><li><a href="012.html"><b>Clara</b><small>Nachricht 012</small></a></li></ul><p class="herz">♥ ♥ ♥</p></div></main></body></html>
